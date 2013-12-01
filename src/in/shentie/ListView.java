@@ -25,7 +25,6 @@ public class ListView extends LinearLayout {
     public void onFinishInflate() {
         super.onFinishInflate();
         menu = (Menu)this.findViewById(R.id.listview_menu);
-        menu.mark("list");
         webview = (BaseWebView)this.findViewById(R.id.listview_webview);
         webview.setWebViewClient(new BaseWebView.MViewClient() {
             @Override
