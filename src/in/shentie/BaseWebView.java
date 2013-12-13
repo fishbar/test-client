@@ -85,7 +85,7 @@ public class BaseWebView extends WebView {
         }
         @Override
         public void onConsoleMessage(String message, int lineNumber, String sourceID) {
-            Log.i("WEBVIEW", "alert info: " + message + " line: " + lineNumber + " source:" + sourceID);
+            Log.i("WEBVIEW", "onConsole: " + message + " line: " + lineNumber + " source:" + sourceID);
         }
         @Override       
         public boolean onJsAlert(WebView view,String url,        
@@ -114,5 +114,8 @@ public class BaseWebView extends WebView {
             scrollTo(getScrollX(), temp_ScrollY);
         }
         return super.onTouchEvent(event);
+    }
+    public void blank() {
+        this.loadUrl("about:blank");
     }
 }

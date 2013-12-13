@@ -37,7 +37,8 @@ public class MainActivity extends Activity {
         
         listView.setListener(new ListView.Listener(){
             @Override
-            public void onListItemClick(String url) {
+            public void onListItemClick(String url, long id) {
+                // TODO: mark pv
                 switchDetail();
                 detailView.render(url);
             }
@@ -52,7 +53,7 @@ public class MainActivity extends Activity {
     }
     protected void onResume() {
         super.onResume();
-        listView.render("http://m.taobao.com");
+        listView.render("http://218.245.3.219:7007/h5/list");
     }
     private void switchDetail() {
     	status = STATUS_DETAIL;
@@ -61,6 +62,7 @@ public class MainActivity extends Activity {
     private void switchList() {
     	status = STATUS_LIST;
     	container.prevNode();
+    	detailView.clean();
     }
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)  {
@@ -68,6 +70,8 @@ public class MainActivity extends Activity {
             if (event.getRepeatCount() >= 0 && event.getRepeatCount() < 3) {
             	if (status != STATUS_LIST) {
             		switchList();
+            	} else if (status == STATUS_LIST) {
+            	    finish();
             	}
             } else if(event.getRepeatCount() > 5) {
             	// dialog change url

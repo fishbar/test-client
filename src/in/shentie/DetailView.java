@@ -61,4 +61,7 @@ public class DetailView extends LinearLayout {
         currentUrl = url;
         webview.loadUrl(url);
     }
+    public void clean() {
+        webview.blank();
+    }
 }
